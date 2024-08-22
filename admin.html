@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Et Cetera - Panel d'Administration</title>
+    <style>
+        :root {
+            --primary-color: #a0b2bc;
+            --secondary-color: #f4c502;
+            --accent-color: #701f32;
+            --background-color: #e6e8e6;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --footer-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .nav-menu {
+            list-style-type: none;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: var(--light-text);
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .product-list, .service-list, .carousel-list {
+            margin-top: 20px;
+        }
+
+        .product-item, .service-item, .carousel-item {
+            background-color: var(--background-color);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .edit-btn, .delete-btn {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">Et Cetera Admin</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#" class="nav-link active">Tableau de bord</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Produits</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Carrousel</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Paramètres</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <h1>Gestion des Produits</h1>
+            <form id="product-form">
+                <div class="form-group">
+                    <label for="product-name">Nom du produit</label>
+                    <input type="text" id="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Description</label>
+                    <textarea id="product-description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Prix</label>
+                    <input type="number" id="product-price" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-category">Catégorie</label>
+                    <select id="product-category" required>
+                        <option value="">Sélectionner une catégorie</option>
+                        <option value="tabac">Tabac</option>
+                        <option value="presse">Presse</option>
+                        <option value="jeux">Jeux</option>
+                        <option value="boissons">Boissons</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="product-image">Image du produit</label>
+                    <input type="file" id="product-image" accept="image/*">
+                </div>
+                <button type="submit">Ajouter le produit</button>
+            </form>
+
+            <div class="product-list">
+                <h2>Liste des produits</h2>
+                <div class="product-item">
+                    <span>Marlboro Rouge - 10.50 €</span>
+                    <div>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <span>Le Monde - 2.80 €</span>
+                    <div>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Gestion des Services</h1>
+            <form id="service-form">
+                <div class="form-group">
+                    <label for="service-name">Nom du service</label>
+                    <input type="text" id="service-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="service-description">Description</label>
+                    <textarea id="service-description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="service-image">Image du service</label>
+                    <input type="file" id="service-image" accept="image/*">
+                </div>
+                <button type="submit">Ajouter le service</button>
+            </form>
+
+            <div class="service-list">
+                <h2>Liste des services</h2>
+                <div class="service-item">
+                    <span>PMU</span>
+                    <div>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <span>Photocopie</span>
+                    <div>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Gestion du Carrousel</h1>
+            <form id="carousel-form">
+                <div class="form-group">
+                    <label for="carousel-title">Titre</label>
+                    <input type="text" id="carousel-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="carousel-description">Description</label>
+                    <textarea id="carousel-description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="carousel-image">Image</label>
+                    <input type="file" id="carousel-image" accept="image/*" required>
+                </div>
+                <button type="submit">Ajouter l'image au carrousel</button>
+            </form>
+
+            <div class="carousel-list">
+                <h2>Images du carrousel</h2>
+                <div class="carousel-item">
+                    <span>Bienvenue chez Et Cetera</span>
+                    <div>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <span>Découvrez nos produits</span>
+                    <div>
+                        <button class="edit-btn">Modifier</button>
+                        <button class="delete-btn">Supprimer</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Ce script est un exemple basique pour illustrer l'interaction.
+        // Dans une vraie application, vous auriez besoin d'une logique plus complexe et d'une connexion à un backend.
+
+        document.getElementById('product-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Produit ajouté avec succès !');
+            // Ici, vous ajouteriez la logique pour envoyer les données au serveur
+        });
+
+        document.getElementById('service-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Service ajouté avec succès !');
+            // Ici, vous ajouteriez la logique pour envoyer les données au serveur
+        });
+
+        document.getElementById('carousel-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Image ajoutée au carrousel avec succès !');
+            // Ici, vous ajouteriez la logique pour envoyer les données au serveur
+        });
+
+        // Gestion des boutons modifier et supprimer
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Fonctionnalité de modification à implémenter');
+            });
+        });
+
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                if(confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
+                    alert('Élément supprimé avec succès !');
+                    // Ici, vous ajouteriez la logique pour supprimer l'élément du serveur
+                }
+            });
+        });
+    </script>
+</body>
+</html>

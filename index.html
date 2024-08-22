@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Et Cetera - Tabac Presse Loto à Droué</title>
+    <style>
+        :root {
+            --primary-color: #a0b2bc;
+            --secondary-color: #f4c502;
+            --accent-color: #701f32;
+            --background-color: #e6e8e6;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --footer-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+        }
+
+        .carousel {
+            margin-top: 70px;
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-content {
+            background-color: rgba(112, 31, 50, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .carousel-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .carousel-content p {
+            color: var(--light-text);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-nav-item {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--light-text);
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-nav-item.active {
+            opacity: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 3rem 0;
+            color: var(--accent-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .card {
+            background-color: var(--light-text);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(44, 62, 80, 0.9);
+            color: var(--light-text);
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-image {
+            filter: blur(3px);
+        }
+
+        .card:hover .card-content {
+            transform: translateY(0);
+        }
+
+        .card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        #contact {
+            background-color: var(--light-text);
+            color: var(--text-color);
+            padding: 3rem 0;
+        }
+
+        footer {
+            background-color: var(--footer-color);
+            color: var(--light-text);
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin-right: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media screen and (max-width: 768px) {
+            .carousel {
+                height: 300px;
+            }
+
+            .carousel-content h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                display: none;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                padding: 1rem;
+            }
+
+            .footer-section {
+                flex: 100%;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Et Cetera...</div>
+                <nav>
+                    <ul id="menu">
+                        <li><a href="#" class="active">Accueil</a></li>
+                        <li><a href="#products">Produits</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-item" style="background-image: url('/preview/images/20240625_164803.jpg');">
+                    <div class="carousel-content">
+                        <h2>Bienvenue chez Et Cetera</h2>
+                        <p>Votre tabac presse à Droué</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('/preview/images/20240625_165148.jpg');">
+                    <div class="carousel-content">
+                        <h2>Large choix de tabac</h2>
+                        <p>Découvrez notre sélection de produits du tabac</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('https://picsum.photos/1200/400?random=3');">
+                    <div class="carousel-content">
+                        <h2>Presse et magazines</h2>
+                        <p>Restez informé avec notre large choix de publications</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('https://picsum.photos/1200/400?random=4');">
+                    <div class="carousel-content">
+                        <h2>Jeux et loteries</h2>
+                        <p>Tentez votre chance avec nos nombreux jeux</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-nav"></div>
+        </section>
+
+        <section id="products">
+            <div class="container">
+                <h2 class="section-title">Nos Produits</h2>
+                <div class="grid">
+                    <a href="/preview/products.html" class="card">
+                        <img src="https://picsum.photos/300/250?random=5" alt="Tabac" class="card-image">
+                        <div class="card-content">
+                            <h3>Tabac</h3>
+                            <p>Large sélection de cigarettes, tabac à rouler, cigares et accessoires pour fumeurs.</p>
+                        </div>
+                    </a>
+                    <a href="/preview/admin.html" class="card">
+                        <img src="https://picsum.photos/300/250?random=6" alt="Presse" class="card-image">
+                        <div class="card-content">
+                            <h3>Presse</h3>
+                            <p>Journaux quotidiens, magazines hebdomadaires et mensuels, publications diverses.</p>
+                        </div>
+                    </a>
+                    <a href="#jeux" class="card">
+                        <img src="https://picsum.photos/300/250?random=7" alt="Jeux" class="card-image">
+                        <div class="card-content">
+                            <h3>Jeux</h3>
+                            <p>Jeux de loterie, tickets à gratter, paris sportifs et hippiques.</p>
+                        </div>
+                    </a>
+                    <a href="#cadeaux" class="card">
+                        <img src="https://picsum.photos/300/250?random=8" alt="Cadeaux" class="card-image">
+                        <div class="card-content">
+                            <h3>Cadeaux</h3>
+                            <p>Cartes cadeaux, coffrets cadeaux, petits objets décoratifs et articles de papeterie fantaisie.</p>
+                        </div>
+                    </a>
+                    <a href="#confiserie" class="card">
+                        <img src="https://picsum.photos/300/250?random=9" alt="Confiserie" class="card-image">
+                        <div class="card-content">
+                            <h3>Confiserie</h3>
+                            <p>Bonbons, chocolats, chewing-gums et autres gourmandises pour petits et grands.</p>
+                        </div>
+                    </a>
+                    <a href="#boissons" class="card">
+                        <img src="https://picsum.photos/300/250?random=10" alt="Boissons" class="card-image">
+                        <div class="card-content">
+                            <h3>Boissons</h3>
+                            <p>Boissons fraîches, cafés à emporter et autres rafraîchissements.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2 class="section-title">Nos Services</h2>
+                <div class="grid">
+                    <div class="card">
+                        <img src="https://picsum.photos/300/250?random=11" alt="PMU" class="card-image">
+                        <div class="card-content">
+                            <h3>PMU</h3>
+                            <p>Paris hippiques sur les courses françaises et internationales. Conseils et suivi des courses en direct.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/300/250?random=12" alt="Paiement de proximité" class="card-image">
+                        <div class="card-content">
+                            <h3>Paiement de proximité</h3>
+                            <p>Réglez vos factures (impôts, amendes, factures de service public) directement chez nous.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/300/250?random=13" alt="Photocopie" class="card-image">
+                        <div class="card-content">
+                            <h3>Photocopie</h3>
+                            <p>Service de photocopie et d'impression pour tous vos documents.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/300/250?random=14" alt="Relais Colis" class="card-image">
+                        <div class="card-content">
+                            <h3>Relais Colis</h3>
+                            <p>Point de retrait et d'envoi pour vos colis. Partenaire de plusieurs services de livraison.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/300/250?random=15" alt="Carte grise" class="card-image">
+                        <div class="card-content">
+                            <h3>Carte grise</h3>
+                            <p>Assistance pour vos démarches de carte grise et autres formalités administratives.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/300/250?random=16" alt="Recharge téléphonique" class="card-image">
+                        <div class="card-content">
+                            <h3>Recharge téléphonique</h3>
+                            <p>Rechargez votre crédit téléphonique pour tous les opérateurs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Nous Contacter</h2>
+                <p>Et Cetera - Votre tabac presse à Droué</p>
+                <p>Adresse : [Adresse exacte à Droué]</p>
+                <p>Téléphone : [Numéro de téléphone]</p>
+                <p>Horaires d'ouverture : [Horaires à préciser]</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>À propos de nous</h3>
+                    <p>Et Cetera est votre tabac-presse de confiance à Droué, offrant une large gamme de produits et services pour répondre à tous vos besoins.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#products">Produits</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Nous contacter</h3>
+                    <p>Téléphone : [Numéro de téléphone]</p>
+                    <p>Email : contact@etcetera-droue.fr</p>
+                    <p>Adresse : [Adresse exacte à Droué]</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Et Cetera Droué. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Carousel functionality
+        const carouselContainer = document.querySelector('.carousel-container');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const carouselNav = document.querySelector('.carousel-nav');
+        let currentIndex = 0;
+
+        // Create navigation dots
+        carouselItems.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-nav-item');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            carouselNav.appendChild(dot);
+        });
+
+        function goToSlide(index) {
+            carouselContainer.style.transform = `translateX(-${index * 100}%)`;
+            document.querySelector('.carousel-nav-item.active').classList.remove('active');
+            document.querySelectorAll('.carousel-nav-item')[index].classList.add('active');
+            currentIndex = index;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % carouselItems.length;
+            goToSlide(currentIndex);
+        }
+
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Active menu item highlight
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.createElement('div');
+        menuToggle.innerHTML = '☰';
+        menuToggle.style.cssText = `
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+        `;
+        document.querySelector('.header-content').appendChild(menuToggle);
+
+        menuToggle.addEventListener('click', () => {
+            document.getElementById('menu').classList.toggle('show');
+        });
+
+        // Responsive menu
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                menuToggle.style.display = 'block';
+            } else {
+                menuToggle.style.display = 'none';
+                document.getElementById('menu').classList.remove('show');
+            }
+        }
+
+        window.addEventListener('resize', checkScreenSize);
+        checkScreenSize(); // Initial check
+    </script>
+</body>
+</html>

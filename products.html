@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Et Cetera - Produits de Tabac</title>
+    <style>
+        :root {
+            --primary-color: #a0b2bc;
+            --secondary-color: #f4c502;
+            --accent-color: #701f32;
+            --background-color: #e6e8e6;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --footer-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+        }
+
+        main {
+            padding-top: 80px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 2rem 0;
+            color: var(--accent-color);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .product-card {
+            background-color: var(--light-text);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--footer-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                display: none;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Et Cetera...</div>
+                <nav>
+                    <ul id="menu">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="#" class="active">Tabac</a></li>
+                        <li><a href="#">Presse</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="page-title">Nos Produits de Tabac</h1>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://picsum.photos/300/200?random=1" alt="Marlboro Rouge" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Marlboro Rouge</h2>
+                        <p class="product-description">Cigarettes classiques au goût riche et intense. Paquet de 20 cigarettes.</p>
+                        <p class="product-price">10.50 €</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://picsum.photos/300/200?random=2" alt="Camel Blue" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Camel Blue</h2>
+                        <p class="product-description">Cigarettes légères avec un arôme doux et équilibré. Paquet de 20 cigarettes.</p>
+                        <p class="product-price">10.20 €</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://picsum.photos/300/200?random=3" alt="Lucky Strike Original" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Lucky Strike Original</h2>
+                        <p class="product-description">Cigarettes au goût authentique et corsé. Paquet de 20 cigarettes.</p>
+                        <p class="product-price">10.30 €</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://picsum.photos/300/200?random=4" alt="Tabac à rouler Golden Virginia" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Golden Virginia</h2>
+                        <p class="product-description">Tabac à rouler premium, saveur douce et aromatique. Paquet de 30g.</p>
+                        <p class="product-price">14.50 €</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://picsum.photos/300/200?random=5" alt="Cigarillos Café Crème" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Café Crème Original</h2>
+                        <p class="product-description">Cigarillos au goût riche et crémeux. Boîte de 10.</p>
+                        <p class="product-price">11.80 €</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://picsum.photos/300/200?random=6" alt="Filtres Slim" class="product-image">
+                    <div class="product-info">
+                        <h2 class="product-title">Filtres Slim</h2>
+                        <p class="product-description">Filtres minces pour cigarettes roulées. Sachet de 120 filtres.</p>
+                        <p class="product-price">1.90 €</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Et Cetera Droué. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.createElement('div');
+        menuToggle.innerHTML = '☰';
+        menuToggle.style.cssText = `
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+        `;
+        document.querySelector('.header-content').appendChild(menuToggle);
+
+        menuToggle.addEventListener('click', () => {
+            document.getElementById('menu').classList.toggle('show');
+        });
+
+        // Responsive menu
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                menuToggle.style.display = 'block';
+            } else {
+                menuToggle.style.display = 'none';
+                document.getElementById('menu').classList.remove('show');
+            }
+        }
+
+        window.addEventListener('resize', checkScreenSize);
+        checkScreenSize(); // Initial check
+    </script>
+</body>
+</html>
